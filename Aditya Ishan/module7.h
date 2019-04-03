@@ -5,7 +5,7 @@
 class Module_7 : public Module_6{
 
    public:
-   	std::map<std::int32_t, std::vector<long double>> temp_Data;
+   std::map<std::int32_t, std::vector<long double>> temp_Data;
       std::map<std::int32_t, long double>              upper_Bound_Of_Ith_Column;
       std::map<std::int32_t, long double>              lower_Bound_Of_Ith_Column;
       std::map<std::int32_t, long double>              iqr_container;	
