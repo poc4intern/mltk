@@ -13,7 +13,7 @@ void Module_8::remove_Outliers_Rows(){
         column_counter = 0;
 	    for(const auto& column_iterator : CSV_Data[row_iterator]){
 
-	    file << column_iterator;
+	    	file << column_iterator;
             file << ',';
             ++column_counter;
 	    }
