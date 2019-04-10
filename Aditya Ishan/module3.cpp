@@ -2,6 +2,8 @@
 
 void Module_3::fill_Missing_Values_With_Mode(){
     
+    std::cout << "-----Filled Missing Values Of Categorical Attribute With Mode.-----\n\n";
+
     std::int32_t column_counter;
     std::ofstream file("aircon1.csv", std::ios::binary);
 
@@ -31,7 +33,7 @@ void Module_3::find_Max_Value_For_Each_Column(){
 
     std::int32_t column_Number;
     
-    std::size_t max_count = 0;
+    std::int32_t max_count = 0;
     
     std::string value;
     
@@ -88,10 +90,9 @@ void Module_3::find_Count_Of_Each_Element_In_Categorical_Column(){
              ++column_counter;
             }
         }
-//--------------------------------------------------------------------------------
+
   // for(auto i:count_For_Each_Column){
   //  std::cout<<i.first.first <<" "<<i.first.second <<" --> "<<i.second<<"\n";
   // }
-//--------------------------------------------------------------------------------
   find_Max_Value_For_Each_Column();
 }
