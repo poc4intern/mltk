@@ -40,9 +40,9 @@ void Module_7::find_Quartile_Range_For_Each_Columns(){
 		column_counter = 0;
 	    for(const auto& column_iterator : CSV_Data[row_iterator]){
 
-	    		temp_Data[column_counter].push_back(std::stold(column_iterator));
+	    	temp_Data[column_counter].push_back(std::stold(column_iterator));
 
-	    	++column_counter;
+	      ++column_counter;
 	    }
 	}
 
