@@ -23,11 +23,12 @@ void Module_2::detect_Data_Type(){
           ++column_counter;
         }  
     }
-
+    
+    std::cout << "-----Data Types Identification Of Each Attribute.-----\n\n";
     for(const auto& iterator : data_Types_Of_Columns) 
         std::cout << iterator.first << " " << iterator.second << "\n";
 
-    std::cout << "\n";
+    std::cout << "\n\n";
 }
 
 void Module_2::count_Number_Of_Rows(){
@@ -69,5 +70,5 @@ void Module_2::remove_Columns_Greater_Than_Threshold(){
         }
     }
 
-    std::cout << "Removed Those Columns Whose Missing Values Less Than Threshold\n";
+    std::cout << "-----Removed Those Columns Whose Missing Values Less Than Threshold-----\n\n";
 }
