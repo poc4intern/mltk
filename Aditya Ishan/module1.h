@@ -25,11 +25,12 @@ class CSV{
         const std::string         error_Target_Column = "Target Column Can't Be Removed.";
         const std::string         error_Empty_CSV = "CSV is empty.";
         static std::int32_t       row;
-        std::int32_t              target_Column;   
+        std::int32_t              target_Column;
+        bool                      flag;
 
         void open_Csv(std::string&, CSV&);
         void read_From_Csv(std::istream&);
-        void print_Csv(std::string&, CSV&);
+        void print_Csv(std::string&, CSV&, bool);
         void check_Csv_Empty();
         void remove_Columns();
         void write_To_Csv();
