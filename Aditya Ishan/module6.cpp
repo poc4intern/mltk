@@ -12,18 +12,18 @@ void Module_6::normalization_Of_The_Data_Set()
 		column_counter = 0;
 	    for(const auto& column_iterator : CSV_Data[row_iterator]){
                 
-                if(maximum_Of_Ith_Column[column_counter] == minimum_Of_Ith_Column[column_counter]){
+            if(maximum_Of_Ith_Column[column_counter] == minimum_Of_Ith_Column[column_counter]){
 
-                	file << (1.0 / (double)number_Of_Rows);
-                }
-                else{
+            	file << (1.0 / (double)number_Of_Rows);
+            }
+            else{
 
-		    		file << ( (std::stold(column_iterator) - minimum_Of_Ith_Column[column_counter]) / 
-		    		          (maximum_Of_Ith_Column[column_counter] - minimum_Of_Ith_Column[column_counter]) );
-		    	}	
+	    		file << ( (std::stold(column_iterator) - minimum_Of_Ith_Column[column_counter]) / 
+	    		          (maximum_Of_Ith_Column[column_counter] - minimum_Of_Ith_Column[column_counter]) );
+	    	}	
 
-	    	file << ',';
-	    	++column_counter;
+	      file << ',';
+	      ++column_counter;
 	    }
 	    file << "\n";
 	}
@@ -47,12 +47,12 @@ void Module_6::find_The_Min_And_Max_Of_Ith_Column(){
 		column_counter = 0;
 	    for(const auto& column_iterator : CSV_Data[row_iterator]){
 
-    			minimum_Of_Ith_Column[column_counter] = std::min(minimum_Of_Ith_Column[column_counter],
-    			                                                 std::stold(column_iterator));
+			minimum_Of_Ith_Column[column_counter] = std::min(minimum_Of_Ith_Column[column_counter],
+			                                                 std::stold(column_iterator));
 
-    			maximum_Of_Ith_Column[column_counter] = std::max(maximum_Of_Ith_Column[column_counter],
-    				                                             std::stold(column_iterator));
-	    	++column_counter;
+			maximum_Of_Ith_Column[column_counter] = std::max(maximum_Of_Ith_Column[column_counter],
+				                                             std::stold(column_iterator));
+	      ++column_counter;
 	    }
 	}
 }
