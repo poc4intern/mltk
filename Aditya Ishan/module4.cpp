@@ -41,7 +41,7 @@ void Module_4::find_Mean_For_Each_Column(){
 	    	if(column_iterator != "" &&
                    data_Types_Of_Columns[column_counter] == "double"){
 
-	    		total_Sum_And_Average_Of_Each_Column[column_counter].first += std::stold(column_iterator);
+	    	    total_Sum_And_Average_Of_Each_Column[column_counter].first += std::stold(column_iterator);
 	    	    total_Sum_And_Average_Of_Each_Column[column_counter].second++;
 	    	}
 
