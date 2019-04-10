@@ -61,16 +61,28 @@ void CSV::remove_Columns(){
 
     std::size_t total_Columns = CSV_Data[0].size();
 
-    std::cout << "\nYou Have Total Columns : " << total_Columns
+    std::cout << "\n-----You Have Total Columns : " << total_Columns
               << "\nEnter The Columns Numbers Between 1 To " << total_Columns 
-              << " To Remove Or Press 0 To Exit\n";
+              << " To Remove Or Press 0 To Exit.-----\n";
 
     std::int32_t column_Number_To_Remove;
-    while(std::cin >> column_Number_To_Remove && column_Number_To_Remove != 0){
+    while(1){
+
+        std::cin >> column_Number_To_Remove;
+        if(std::cin.fail()){
+            std::cout << "-----Enter The Correct Choice.-----\n";
+            std::cin.clear();
+            std::cin.ignore(256,'\n');
+            continue;
+        }
+
+        if(!column_Number_To_Remove){
+            break;  // 0 is pressed.
+        }
         
         try{
             if(column_Number_To_Remove < 0 || 
-               column_Number_To_Remove > total_Columns){
+               (size_t)column_Number_To_Remove > total_Columns){
 
                 throw error_Range;
             }
@@ -102,12 +114,20 @@ void CSV::set_Target_Column(){
 
     std::size_t nth_Column = CSV_Data[0].size();
 
-    std::cout << "\nEnter Target Column Attribute Between 1 To " << nth_Column << " : ";
+    std::cout << "\n-----Enter Target Column Attribute Between 1 To " << nth_Column << ".-----\n";
 
-    while(std::cin >> target_Column){
+    while(1){
+
+        std::cin >> target_Column;
+        if(std::cin.fail()){
+            std::cout << "-----Enter The Correct Choice.-----\n";
+            std::cin.clear();
+            std::cin.ignore(256,'\n');
+            continue;
+        }
 
         try{
-            if(target_Column < 0 || target_Column > nth_Column){
+            if(target_Column < 0 || (size_t)target_Column > nth_Column){
 
                 throw error_Range;
             }
@@ -138,7 +158,7 @@ void CSV::set_Target_Column(){
         }
     }
 
-    std::cout << "\nTarget Column Is Now The Nth Column.\n";
+    std::cout << "\n-----Target Column Is Now The Nth Column.-----\n\n";
     
     target_Column = nth_Column;
     
@@ -169,24 +189,26 @@ void CSV::check_Csv_Empty()
     }
 }
 
-void CSV::print_Csv(std::string& file_Name, CSV& obj){
+void CSV::print_Csv(std::string& file_Name, CSV& obj, bool flag){
     
     row = -1;
     empty_2Dvector();
     open_Csv(file_Name, obj);
 
     check_Csv_Empty();
+    
+    if(flag){
+        for(std::int32_t row_Iterator = 0; CSV_Data[row_Iterator].size() 
+                      && row_Iterator != MAX_SIZE; ++row_Iterator){
+           
+            for(const auto& column_Iterator : CSV_Data[row_Iterator]){
+                
+                std::cout << std::left << std::setfill(' ') << std::setw(10);  
 
-    for(std::int32_t row_Iterator = 0; CSV_Data[row_Iterator].size() 
-                  && row_Iterator != MAX_SIZE; ++row_Iterator){
-       
-        for(const auto& column_Iterator : CSV_Data[row_Iterator]){
-            
-            std::cout << std::left << std::setfill(' ') << std::setw(10);  
-
-            std::cout << column_Iterator << " ";
+                std::cout << column_Iterator << " ";
+            }
+            std::cout << "\n";
         }
-        std::cout << "\n";
     }
     std::cout << "\n";
 }
