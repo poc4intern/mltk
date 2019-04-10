@@ -5,8 +5,8 @@
 class Module_5 : public Module_4{
 
    public:
-   	std::multimap<std::int32_t, std::pair<std::string, std::int32_t>> rank_Of_Unique_Elements_Of_Ordinal_Columns;
-   	std::map<std::int32_t, std::vector<std::string>>                  nominal_Elements_Of_Each_Row;
+   std::multimap<std::int32_t, std::pair<std::string, std::int32_t>> rank_Of_Unique_Elements_Of_Ordinal_Columns;
+   std::map<std::int32_t, std::vector<std::string>>                  nominal_Elements_Of_Each_Row;
       std::map<std::int32_t, std::set<std::string>>                     unique_Elements_Of_Nominal_Columns;
       std::map<std::int32_t, std::set<std::string>>                     unique_Elements_Of_Ordinal_Columns;
       std::vector<std::string>                                          nth_Column_Data;
