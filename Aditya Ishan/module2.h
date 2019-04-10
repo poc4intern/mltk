@@ -5,7 +5,7 @@
 class Module_2 : public CSV{
 
    public:
-   	  std::map<std::int32_t, std::string> data_Types_Of_Columns;
+   	    std::map<std::int32_t, std::string> data_Types_Of_Columns;
         std::int32_t                        number_Of_Rows;
         std::int32_t                        threshold;
 
