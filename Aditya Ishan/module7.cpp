@@ -1,7 +1,7 @@
 #include "module7.h"
 
-void Module_7::calculate_Iqr()
-{
+void Module_7::calculate_Iqr(){
+	
 	for(const auto& iterator : lower_Bound_Of_Ith_Column){
 		
 		iqr_container[iterator.first] 
