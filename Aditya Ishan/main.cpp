@@ -12,32 +12,48 @@ int main()
 {
     Module_8 obj;
 
-    std::string file_Name = "aircon.csv";   
+    std::string file_Name = "aircon.csv"; 
+
+    bool remove_Columns_print_Flag = false;
+    bool print_Flag                = true;  
     
-    obj.print_Csv(file_Name, obj);
+    obj.print_Csv(file_Name, obj, print_Flag);
 
     obj.set_Target_Column();
 
-    bool remove_Columns_Flag = false;
-    
-    std::cout << "\nDo You Want To Remove Columns?"
-                 "\nPress 1 For Yes Or 0 For No\n";
-    
-    std::cin >> remove_Columns_Flag;
 
-    if(remove_Columns_Flag) obj.remove_Columns();
+    
+    std::cout << "\n-----Do You Want To Remove Columns?"
+                 "\nPress 1 For Yes Or 0 For No-----\n"; 
+    
+    std::cin >> remove_Columns_print_Flag;
+
+    while(std::cin.fail()){
+        
+        std::cout << "-----Enter The Correct Choice.-----\n";
+
+        std::cout << "\n-----Do You Want To Remove Columns?"
+                     "\nPress 1 For Yes Or 0 For No.-----\n"; 
+        
+        std::cin.clear();
+        std::cin.ignore(256,'\n');
+        
+        std::cin >> remove_Columns_print_Flag;
+    }
+
+    if(remove_Columns_print_Flag) obj.remove_Columns();
 
     obj.write_To_Csv();
   
     file_Name = "aircon1.csv";
 
-    obj.print_Csv(file_Name, obj);
+    obj.print_Csv(file_Name, obj, print_Flag);
 
     obj.remove_Columns_Greater_Than_Threshold();
 
     obj.write_To_Csv();
 
-    obj.print_Csv(file_Name, obj);
+    obj.print_Csv(file_Name, obj, print_Flag);
 
     obj.detect_Data_Type();
 
@@ -45,13 +61,13 @@ int main()
 
     obj.fill_Missing_Values_With_Mode();
 
-    obj.print_Csv(file_Name, obj);
+    obj.print_Csv(file_Name, obj, print_Flag);
 
     obj.find_Mean_For_Each_Column();
 
     obj.fill_Missing_Values_With_Mean();
 
-    obj.print_Csv(file_Name, obj);
+    obj.print_Csv(file_Name, obj, print_Flag);
     
     obj.distinguish_Between_Ordinal_And_Nominal();
 
@@ -61,7 +77,7 @@ int main()
 
     obj.replace_Ordinal_Columns_Value_With_Labels();
 
-    obj.print_Csv(file_Name, obj);
+    obj.print_Csv(file_Name, obj, print_Flag);
 
     obj.store_The_Values_Of_Nominal_Columns();
 
@@ -69,13 +85,15 @@ int main()
 
     obj.write_To_Csv();
 
-    obj.print_Csv(file_Name, obj);
+    print_Flag = false;
+    obj.print_Csv(file_Name, obj, print_Flag);
 
     obj.find_The_Min_And_Max_Of_Ith_Column();
 
     obj.normalization_Of_The_Data_Set();
 
-    obj.print_Csv(file_Name, obj);
+    print_Flag = false;
+    obj.print_Csv(file_Name, obj, print_Flag);
 
     obj.find_Quartile_Range_For_Each_Columns();
 
@@ -86,14 +104,16 @@ int main()
     obj.detect_Outliers_Rows_To_Remove();
 
     obj.remove_Outliers_Rows();
-
-    obj.print_Csv(file_Name, obj);
+    
+    print_Flag = false;
+    obj.print_Csv(file_Name, obj, print_Flag);
 
     obj.fill_Nominal_Values_With_Sparse_Matrix();
 
     file_Name = "data.csv";
-
-    obj.print_Csv(file_Name, obj);
+    
+    print_Flag = true;
+    obj.print_Csv(file_Name, obj, print_Flag);
     
     return 0;
 }
