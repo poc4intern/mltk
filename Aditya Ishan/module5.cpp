@@ -2,6 +2,14 @@
 
 void Module_5::store_Nth_Column(){
 
+    std::cout << "-----Nominal Attributes Are Converted Into Sparse Matrix.-----\n\n";
+    std::cout << "-----Normalization Is Done On Data Set.-----\n\n";
+    std::cout << "----- " << rows_To_Remove.size() << " Outliers Rows Are Removed.-----\n\n";
+    std::cout << "-----Rows Which Are Removed Are.-----\n";
+    
+    for(auto rows : rows_To_Remove) std::cout << rows << " ";
+        std::cout << "\n\n";
+
     std::size_t  nth_column = CSV_Data[0].size() - 1;
     std::int32_t column_counter;
 
@@ -11,7 +19,7 @@ void Module_5::store_Nth_Column(){
         column_counter = 0;
         for(const auto& column_iterator : CSV_Data[row_iterator]){
 
-            if(column_counter == nth_column){
+            if((size_t)column_counter == nth_column){
                 nth_Column_Data.push_back(column_iterator);
             }
 
@@ -37,7 +45,10 @@ void Module_5::fill_Nominal_Values_With_Sparse_Matrix(){
 
     for(const auto& row_iterator : nominal_Elements_Of_Each_Row){
 
-        if(rows_To_Remove.find(row_iterator.first) != rows_To_Remove.end()) continue;
+        if(rows_To_Remove.find(row_iterator.first) 
+                        != rows_To_Remove.end()){
+            continue;  
+        } 
 
         std::getline(file1, line);
 
@@ -83,7 +94,8 @@ void Module_5::store_The_Values_Of_Nominal_Columns(){
         column_counter = 0;
         for(const auto& column_iterator : CSV_Data[row_iterator]){
 
-            if(nominal_Column_Indexes.find(column_counter) != nominal_Column_Indexes.end()){
+            if(nominal_Column_Indexes.find(column_counter) 
+                                    != nominal_Column_Indexes.end()){
 
                 nominal_Elements_Of_Each_Row[row_iterator].push_back(column_iterator);
 
@@ -172,12 +184,12 @@ void Module_5::label_Encoding_Of_Ordinal_Columns(){
 		rank_Keeper.clear();
 	}
 
-//-------------------------------------------------------------------
+//--------------------------------------------------------------------
 	// for(auto i : rank_Of_Unique_Elements_Of_Ordinal_Columns){
 	// 	std::cout<<i.first<<" ---> ";
 	// 	std::cout<<i.second.first<<" "<<i.second.second<<"\n";
 	// }
-//------------------------------------------------------------------
+//--------------------------------------------------------------------
 }
 
 void Module_5::find_Unique_Values_For_The_Ordinal_Columns(){
