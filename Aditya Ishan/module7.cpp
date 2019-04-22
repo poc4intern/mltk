@@ -134,19 +134,17 @@ void Module_7::find_Quartile_Range_For_Each_Columns(Module_7& obj){
     for(auto map_iterator = temp_Data.begin(); 
          map_iterator != temp_Data.end(); ++map_iterator){
         
-        Strategy *strategy_Obj = nullptr;
-
         middle = (map_iterator->second.size() + 1) / 2;
 
         if(map_iterator->second.size() & 1){ //n is odd
 
             if((middle-1) & 1){ //n/2 is odd
-                strategy_Obj = new odd_Odd_Strategy();
+                std::unique_ptr<Strategy> strategy_Obj(new odd_Odd_Strategy()); 
                 strategy_Obj->justify_strategy(map_iterator, obj);
             }
 
             else{ //n/2 is even
-                strategy_Obj = new odd_Even_Strategy();
+                std::unique_ptr<Strategy> strategy_Obj(new odd_Even_Strategy()); 
                 strategy_Obj->justify_strategy(map_iterator, obj);
             }
         }
@@ -154,16 +152,16 @@ void Module_7::find_Quartile_Range_For_Each_Columns(Module_7& obj){
         else{ //n is even
 
             if(middle & 1){
-                strategy_Obj = new even_Odd_Strategy();
+                std::unique_ptr<Strategy> strategy_Obj(new even_Odd_Strategy()); 
                 strategy_Obj->justify_strategy(map_iterator, obj);
             }
 
             else{
-                strategy_Obj = new even_Even_Strategy();
+                std::unique_ptr<Strategy> strategy_Obj(new even_Even_Strategy()); 
                 strategy_Obj->justify_strategy(map_iterator, obj);
             } 
         }
-       delete strategy_Obj; 
+       // delete strategy_Obj; 
     }
 //------------------------------------------------
     // for(const auto& i : lower_Bound_Of_Ith_Column){
