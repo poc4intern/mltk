@@ -161,7 +161,6 @@ void Module_7::find_Quartile_Range_For_Each_Columns(Module_7& obj){
                 strategy_Obj->justify_strategy(map_iterator, obj);
             } 
         }
-       // delete strategy_Obj; 
     }
 //------------------------------------------------
     // for(const auto& i : lower_Bound_Of_Ith_Column){
